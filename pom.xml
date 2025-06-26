@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <name>${project.artifactId}</name>
+    <groupId>com.ninghua</groupId>
+    <artifactId>ning-hua-common</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>ning-hua-common-core</module>
+        <module>ning-hua-common-security</module>
+        <module>ning-hua-common-database</module>
+        <module>ning-hua-common-feign</module>
+        <module>ning-hua-common-log</module>
+        <module>ning-hua-common-lock</module>
+    </modules>
+
+    <properties>
+        <ning-hua-common-core.version>1.0-SNAPSHOT</ning-hua-common-core.version>
+        <ning-hua-common-security.version>1.0-SNAPSHOT</ning-hua-common-security.version>
+        <ning-hua-common-database.version>1.0-SNAPSHOT</ning-hua-common-database.version>
+        <ning-hua-common-feign.version>1.0-SNAPSHOT</ning-hua-common-feign.version>
+        <ning-hua-common-log.version>1.0-SNAPSHOT</ning-hua-common-log.version>
+        <ning-hua-common-lock.version>1.0-SNAPSHOT</ning-hua-common-lock.version>
+
+        <lombok-version>1.18.36</lombok-version>
+        <spring-boot.version>3.4.5</spring-boot.version>
+        <spring-cloud.version>2024.0.1</spring-cloud.version>
+        <spring-cloud-alibaba.version>2023.0.3.2</spring-cloud-alibaba.version>
+
+        <mybatis-plus.version>3.5.11</mybatis-plus.version>
+        <dynamic-ds.version>4.3.1</dynamic-ds.version>
+        <sa-token.version>1.42.0</sa-token.version>
+        <hutool.version>5.8.36</hutool.version>
+        <jasypt.version>3.0.5</jasypt.version>
+        <redisson.version>3.49.0</redisson.version>
+        <plumelog.version>3.5.3</plumelog.version>
+        <swagger.core.version>2.2.29</swagger.core.version>
+
+
+        <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring cloud 依赖 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations-jakarta</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-jwt</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot3-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-jsqlparser</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.ninghua</groupId>
+                <artifactId>ning-hua-common-core</artifactId>
+                <version>${ning-hua-common-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ninghua</groupId>
+                <artifactId>ning-hua-common-security</artifactId>
+                <version>${ning-hua-common-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ninghua</groupId>
+                <artifactId>ning-hua-common-database</artifactId>
+                <version>${ning-hua-common-database.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ninghua</groupId>
+                <artifactId>ning-hua-common-feign</artifactId>
+                <version>${ning-hua-common-feign.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ninghua</groupId>
+                <artifactId>ning-hua-common-log</artifactId>
+                <version>${ning-hua-common-log.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ninghua</groupId>
+                <artifactId>ning-hua-common-lock</artifactId>
+                <version>${ning-hua-common-lock.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <target>${maven.compiler.target}</target>
+                    <source>${maven.compiler.source}</source>
+                    <encoding>UTF-8</encoding>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

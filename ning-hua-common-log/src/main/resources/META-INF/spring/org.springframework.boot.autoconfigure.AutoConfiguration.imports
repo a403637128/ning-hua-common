@@ -1,0 +1,4 @@
+com.ninghua.common.log.interceptor.TraceInterceptor
+#com.ninghua.common.log.aop.AspectConfig
+com.ninghua.common.log.NingHuaLogConfigurer
+com.ninghua.common.log.filter.RequestLogFilter

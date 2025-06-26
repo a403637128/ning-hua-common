@@ -1,0 +1,3 @@
+com.ninghua.common.lock.config.LockAutoConfiguration
+com.ninghua.common.lock.config.RedissonLockAutoConfiguration
+com.ninghua.common.lock.config.RedisTemplateLockAutoConfiguration
