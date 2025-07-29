@@ -9,7 +9,7 @@
     <artifactId>ning-hua-common-lock</artifactId>
     <name>ning-hua-common-lock</name>
     <url>http://maven.apache.org</url>
-
+    <version>${ning-hua-common-lock.version}</version>
     <dependencies>
         <dependency>
             <groupId>com.ninghua</groupId>

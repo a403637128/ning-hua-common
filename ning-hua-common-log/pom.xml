@@ -8,7 +8,7 @@
     </parent>
     <artifactId>ning-hua-common-log</artifactId>
     <name>ning-hua-common-log</name>
-
+    <version>${ning-hua-common-log.version}</version>
     <dependencies>
         <dependency>
             <groupId>com.ninghua</groupId>

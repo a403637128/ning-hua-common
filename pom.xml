@@ -14,16 +14,16 @@
         <module>ning-hua-common-database</module>
         <module>ning-hua-common-feign</module>
         <module>ning-hua-common-log</module>
-        <module>ning-hua-common-lock</module>
+        <module>ning-hua-common-lock</module>x
     </modules>
 
     <properties>
-        <ning-hua-common-core.version>1.0-SNAPSHOT</ning-hua-common-core.version>
-        <ning-hua-common-security.version>1.0-SNAPSHOT</ning-hua-common-security.version>
-        <ning-hua-common-database.version>1.0-SNAPSHOT</ning-hua-common-database.version>
-        <ning-hua-common-feign.version>1.0-SNAPSHOT</ning-hua-common-feign.version>
-        <ning-hua-common-log.version>1.0-SNAPSHOT</ning-hua-common-log.version>
-        <ning-hua-common-lock.version>1.0-SNAPSHOT</ning-hua-common-lock.version>
+        <ning-hua-common-core.version>0.0.13</ning-hua-common-core.version>
+        <ning-hua-common-security.version>0.0.1</ning-hua-common-security.version>
+        <ning-hua-common-database.version>0.0.1</ning-hua-common-database.version>
+        <ning-hua-common-feign.version>0.0.2</ning-hua-common-feign.version>
+        <ning-hua-common-log.version>0.0.1</ning-hua-common-log.version>
+        <ning-hua-common-lock.version>0.0.1</ning-hua-common-lock.version>
 
         <lombok-version>1.18.36</lombok-version>
         <spring-boot.version>3.4.5</spring-boot.version>
@@ -164,4 +164,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- 发布私服配置 -->
+    <distributionManagement>
+        <repository>
+            <id>ning-hua</id>
+            <url>https://packages.aliyun.com/613886a5ce3034e52627e16b/maven/ning-hua/</url>
+        </repository>
+    </distributionManagement>
 </project>

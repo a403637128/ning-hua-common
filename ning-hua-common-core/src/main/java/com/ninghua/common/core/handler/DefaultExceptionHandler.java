@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
@@ -30,6 +31,15 @@ public class DefaultExceptionHandler {
         String requestId = RequestUtils.getGatewayRequestId(request);
         log.warn(StrUtil.format("{} | 请求异常: {}", requestId, ex.getMessage()), ex);
         return NingHuaResult.failed(ex.getMessage(), ex.getErrorCode());
+    }
+
+    @ResponseBody
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public NingHuaResult<String> httpRequestMethodNotSupportedExceptionHandler(HttpServletRequest request, HttpServletResponse response, HttpRequestMethodNotSupportedException ex) {
+        RequestUtils.dealIfFeignRequest(request, response);
+        String requestId = RequestUtils.getGatewayRequestId(request);
+        log.warn(StrUtil.format("{} | 请求方法错误: {}", requestId, ex.getMessage()), ex);
+        return NingHuaResult.failed(ErrorCode.METHOD_NOT_SUPPORT);
     }
 
     @ResponseBody

@@ -8,6 +8,7 @@
     </parent>
     <artifactId>ning-hua-common-feign</artifactId>
     <name>ning-hua-common-feign</name>
+    <version>${ning-hua-common-feign.version}</version>
 
     <dependencies>
         <dependency>

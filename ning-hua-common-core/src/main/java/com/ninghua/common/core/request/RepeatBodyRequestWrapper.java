@@ -4,6 +4,7 @@ import jakarta.servlet.ReadListener;
 import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StreamUtils;
@@ -36,8 +37,11 @@ public class RepeatBodyRequestWrapper extends HttpServletRequestWrapper {
 
     @Override
     public BufferedReader getReader() {
+        return new BufferedReader(new InputStreamReader(getInputStream()));
+        /**
         return ObjectUtils.isEmpty(this.bodyByteArray) ? null
                 : new BufferedReader(new InputStreamReader(getInputStream()));
+         **/
     }
 
     @Override
@@ -63,10 +67,35 @@ public class RepeatBodyRequestWrapper extends HttpServletRequestWrapper {
             public int read() {
                 return byteArrayInputStream.read();
             }
+            @Override
+            public int read(@NotNull byte[] b, int off, int len) {
+                return byteArrayInputStream.read(b, off, len);
+            }
+
+            @Override
+            public long skip(long n) {
+                return byteArrayInputStream.skip(n);
+            }
+
+            @Override
+            public int available() {
+                return byteArrayInputStream.available();
+            }
         };
     }
 
     private static byte[] getByteBody(HttpServletRequest request) {
+        String contentType = request.getContentType();
+        // 跳过 multipart 类型（通常为文件上传）
+        if (contentType != null && contentType.startsWith("multipart/")) {
+            return new byte[0];
+        }
+        // 限制最大缓存大小（10MB）
+        long contentLength = request.getContentLengthLong();
+        if (contentLength > 10 * 1024 * 1024) {
+            log.warn("请求体过大，跳过缓存，长度: {}", contentLength);
+            return new byte[0];
+        }
         byte[] body = new byte[0];
         try {
             body = StreamUtils.copyToByteArray(request.getInputStream());

@@ -67,8 +67,10 @@ public class FeignConf {
                 if (headerNames != null) {
                     while (headerNames.hasMoreElements()) {
                         String name = headerNames.nextElement();
-                        String values = request.getHeader(name);
-                        requestTemplate.header(name, values);
+                        if (!"content-length".equals(name)) {
+                            String values = request.getHeader(name);
+                            requestTemplate.header(name, values);
+                        }
                     }
                 }
             }

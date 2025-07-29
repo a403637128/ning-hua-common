@@ -9,6 +9,7 @@
     <artifactId>ning-hua-common-security</artifactId>
     <name>ning-hua-common-security</name>
     <url>https://maven.apache.org</url>
+    <version>${ning-hua-common-security.version}</version>
 
     <dependencies>
         <dependency>

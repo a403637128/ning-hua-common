@@ -19,6 +19,7 @@ public enum ErrorCode {
     MANY_REQUESTS(429, "操作频繁,请稍后再试！"),
 
     CONFLICT(409, "操作正在处理中,请稍后再试！"),
+    METHOD_NOT_SUPPORT(405,"请求方法错误！"),
 
     NOT_FOUND(404, "请求路径 404！"),;
 

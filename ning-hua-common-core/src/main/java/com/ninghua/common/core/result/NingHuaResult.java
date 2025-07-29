@@ -58,7 +58,10 @@ public class NingHuaResult<T> implements Serializable {
         NingHuaResult<T> result = new NingHuaResult<>();
         result.setSucceed(true);
         result.setData(data);
-        result.setError(null);
+
+        Error error= new Error();
+        error.setCode(ErrorCode.SUCCESS.getCode());
+        result.setError(error);
         result.setMsg("成功");
         return result;
     }
