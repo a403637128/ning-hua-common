@@ -14,13 +14,13 @@
         <module>ning-hua-common-database</module>
         <module>ning-hua-common-feign</module>
         <module>ning-hua-common-log</module>
-        <module>ning-hua-common-lock</module>x
+        <module>ning-hua-common-lock</module>
     </modules>
 
     <properties>
-        <ning-hua-common-core.version>0.0.13</ning-hua-common-core.version>
+        <ning-hua-common-core.version>0.0.17</ning-hua-common-core.version>
         <ning-hua-common-security.version>0.0.1</ning-hua-common-security.version>
-        <ning-hua-common-database.version>0.0.1</ning-hua-common-database.version>
+        <ning-hua-common-database.version>0.0.4</ning-hua-common-database.version>
         <ning-hua-common-feign.version>0.0.2</ning-hua-common-feign.version>
         <ning-hua-common-log.version>0.0.1</ning-hua-common-log.version>
         <ning-hua-common-lock.version>0.0.1</ning-hua-common-lock.version>

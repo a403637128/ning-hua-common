@@ -7,6 +7,8 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import java.util.Collections;
@@ -23,7 +25,7 @@ public abstract class AbstractResConverterHandler {
     @Resource
     private ServletContext servletContext;
 
-    @Resource
+    //@Resource
     private HttpServletRequest request;
 
     /**
@@ -82,8 +84,12 @@ public abstract class AbstractResConverterHandler {
     }
 
     private <E, R>R deal(E src, ResourceConverter<E, R> builder, Map<String, Object> extension) {
-        AuthPayload auth = this.getAuth();
-        NingHuaHeader appHeader = RequestUtils.getNingHuaHeaderByRequest(this.request);
+        AuthPayload auth = null;
+        NingHuaHeader appHeader = null;
+        if (this.getRequest() != null) {
+            auth = this.getAuth();
+            appHeader = RequestUtils.getNingHuaHeaderByRequest(this.getRequest());
+        }
         Map<String, Object> mergeMap = new HashMap<>(8);
         mergeMap.putAll(extension);
         mergeMap.putAll(this.getDefaultExtension());
@@ -98,8 +104,12 @@ public abstract class AbstractResConverterHandler {
     }
 
     private <E, R>List<R> deal(List<E> src, ResourceConverter<E, R> converter, Map<String, Object> extension) {
-        AuthPayload auth = this.getAuth();
-        NingHuaHeader appHeader = RequestUtils.getNingHuaHeaderByRequest(this.request);
+        AuthPayload auth = null;
+        NingHuaHeader appHeader = null;
+        if (this.getRequest() != null) {
+            auth = this.getAuth();
+            appHeader = RequestUtils.getNingHuaHeaderByRequest(this.getRequest());
+        }
         Map<String, Object> mergeMap = new HashMap<>(8);
         mergeMap.putAll(extension);
         mergeMap.putAll(this.getDefaultExtension());
@@ -136,6 +146,16 @@ public abstract class AbstractResConverterHandler {
             e.printStackTrace();
             throw new RuntimeException(converterClass.getSimpleName() + " 转换器初始化异常");
         }
+    }
+
+    public HttpServletRequest getRequest(){
+        if(this.request == null){
+            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+            if (attributes != null) {
+                this.request = attributes.getRequest();
+            }
+        }
+        return this.request;
     }
 
 }

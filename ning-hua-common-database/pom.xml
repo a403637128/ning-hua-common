@@ -8,7 +8,6 @@
     </parent>
     <artifactId>ning-hua-common-database</artifactId>
     <name>ning-hua-common-database</name>
-    <url>http://maven.apache.org</url>
     <version>${ning-hua-common-database.version}</version>
 
     <dependencies>

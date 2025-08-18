@@ -4,16 +4,15 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.ninghua.common.core.constants.CommonConstants;
 import com.ninghua.common.core.constants.SecurityConstants;
-import com.ninghua.common.core.converter.ResConverterHandler;
 import com.ninghua.common.core.util.AuthPayload;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ClassUtils;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import java.nio.charset.Charset;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 /**
  * @Author Derek.Fung
@@ -77,6 +76,9 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
      * @return 当前用户名
      */
     private String getUserName() {
+        if (RequestContextHolder.getRequestAttributes() == null) {
+            return null;
+        }
         Object auth = this.request.getAttribute(SecurityConstants.AUTH_ATTR_NAME);
         AuthPayload payload = auth == null ? null : (AuthPayload) auth;
         return payload == null ? null : payload.getId();

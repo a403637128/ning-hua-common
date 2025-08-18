@@ -5,7 +5,6 @@ import com.plumelog.core.TraceId;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
  * @Author Derek.Fung
